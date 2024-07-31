@@ -75,16 +75,19 @@ export async function hapusAbsensi(docId) {
   await deleteDoc(doc(db, "absensi", docId));
 }
 
-export async function ubahPembeli(docId, nama, alamat, noTlpn) {
-  await updateDoc(doc(db, "pembeli", docId), {
-    nama: nama,
+export async function ubahAbsensi(docId, nama, alamat, noTlpn) {
+  await updateDoc(doc(db, "absensi", docId), {
+    tanggal: tanggal,
+    nis: nis,
     alamat: alamat,
-    noTlpn: noTlpn
+    noTlpn: noTlpn,
+    kelas: kelas,
+    keterangan: keterangan 
   });
 }
 
-export async function ambilPembeli(docId) {
-  const docRef = await doc(db, "pembeli", docId);
+export async function ambilAbsensi(docId) {
+  const docRef = await doc(db, "absensi", docId);
   const docSnap = await getDoc(docRef);
 
   return await docSnap.data();
